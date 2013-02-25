@@ -21,7 +21,7 @@
     (unless (and process-obj
                  (eq (process-status process-obj) 'run))
       (start-process "auto-sync-process"
-                     (get-buffer-create "auto-sync")
+                     (get-buffer-create "*auto-sync*")
                      script))))
 
 (defun auto-sync-run ()
@@ -35,6 +35,6 @@
       (message "Wrote %s" buffer-file-name)))))
 
 (defun auto-sync-after-save-buffer-done ()
-  (add-hook 'after-save-hook 'auto-sync-run buffer-file-name))
+  (add-hook 'after-save-hook 'auto-sync-run))
 
 (provide 'auto-sync)
